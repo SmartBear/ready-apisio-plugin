@@ -2,7 +2,10 @@ package com.smartbear.apisio;
 
 import com.eviware.soapui.SoapUI;
 import com.eviware.soapui.impl.rest.RestService;
+import com.eviware.soapui.impl.rest.RestServiceFactory;
+import com.eviware.soapui.impl.rest.support.WadlImporter;
 import com.eviware.soapui.impl.wsdl.WsdlProject;
+import com.eviware.soapui.support.ModelItemNamer;
 import com.smartbear.apisio.entities.importx.Format;
 import com.smartbear.swagger.SwaggerImporter;
 import com.smartbear.swagger.SwaggerUtils;
@@ -47,8 +50,11 @@ public class ApiRequest {
             //TODO: not implemented
             throw new Exception("Not implemented RAML");
         } else if (apiFormat.type == Format.Type.WADL) {
-            //TODO: not implemented
-            throw new Exception("Not implemented WADL");
+            RestService rest = (RestService) project
+                    .addNewInterface(ModelItemNamer.createName("Service", project.getInterfaceList()), RestServiceFactory.REST_TYPE);
+            WadlImporter importer = new WadlImporter(rest);
+            importer.initFromWadl(Helper.stringToUrl(path).toString());
+            return new RestService[] { rest };
         } else {
             throw new Exception("Unexpected format of the API description: " + apiFormat.type);
         }
