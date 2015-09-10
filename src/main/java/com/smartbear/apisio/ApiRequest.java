@@ -31,12 +31,11 @@ public class ApiRequest {
         return execute(String.format("%s/search?q=%s&limit=10000", baseUrl, value));
     }
 
-    public static RestService importAPItoProject(Format apiFormat,  WsdlProject project) throws Exception {
+    public static RestService[] importAPItoProject(Format apiFormat,  WsdlProject project) throws Exception {
         String path = apiFormat.url;
         if (apiFormat.type == Format.Type.SWAGGER) {
             SwaggerImporter importer = SwaggerUtils.createSwaggerImporter(path, project);
-            SoapUI.log("Importing Swagger from [" + path + "]");
-            return importer.importApiDeclaration(path);
+            return new RestService[] { importer.importApiDeclaration(path) };
         } else if (apiFormat.type == Format.Type.RAML) {
             //TODO: not implemented
             throw new Exception("Not implemented RAML");

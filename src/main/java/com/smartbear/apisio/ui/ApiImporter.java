@@ -12,6 +12,7 @@ import com.smartbear.apisio.Strings;
 import com.smartbear.apisio.entities.importx.Api;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ApiImporter implements Worker {
@@ -44,8 +45,8 @@ public class ApiImporter implements Worker {
     public Object construct(XProgressMonitor xProgressMonitor) {
         for (Api api: apis) {
             try {
-                RestService service = ApiRequest.importAPItoProject(api.getFormat(), wsdlProject);
-                addedServices.add(service);
+                RestService[] services = ApiRequest.importAPItoProject(api.getFormat(), wsdlProject);
+                addedServices.addAll(Arrays.asList(services));
             } catch (Throwable e) {
                 SoapUI.logError(e);
                 errors.append(String.format(Strings.Executing.IMPORT_ERROR, api.name, e.getMessage()));
