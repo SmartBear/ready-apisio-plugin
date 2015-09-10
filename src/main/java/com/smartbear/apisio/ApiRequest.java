@@ -35,7 +35,14 @@ public class ApiRequest {
         String path = apiFormat.url;
         if (apiFormat.type == Format.Type.SWAGGER) {
             SwaggerImporter importer = SwaggerUtils.createSwaggerImporter(path, project);
-            return new RestService[] { importer.importApiDeclaration(path) };
+            ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+            Thread.currentThread().setContextClassLoader(SwaggerUtils.class.getClassLoader());
+            SoapUI.log("Importing Swagger from [" + path + "]");
+            try {
+                return importer.importSwagger(path);
+            } finally {
+                Thread.currentThread().setContextClassLoader(contextClassLoader);
+            }
         } else if (apiFormat.type == Format.Type.RAML) {
             //TODO: not implemented
             throw new Exception("Not implemented RAML");
