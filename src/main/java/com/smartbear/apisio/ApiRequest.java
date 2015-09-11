@@ -5,13 +5,16 @@ import com.eviware.soapui.impl.rest.RestService;
 import com.eviware.soapui.impl.rest.RestServiceFactory;
 import com.eviware.soapui.impl.rest.support.WadlImporter;
 import com.eviware.soapui.impl.wsdl.WsdlProject;
+import com.eviware.soapui.impl.wsdl.support.PathUtils;
 import com.eviware.soapui.support.ModelItemNamer;
 import com.smartbear.apisio.entities.importx.Format;
+import com.smartbear.soapui.raml.RamlImporter;
 import com.smartbear.swagger.SwaggerImporter;
 import com.smartbear.swagger.SwaggerUtils;
 
 import javax.json.JsonObject;
 import javax.json.stream.JsonParsingException;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -47,8 +50,15 @@ public class ApiRequest {
                 Thread.currentThread().setContextClassLoader(contextClassLoader);
             }
         } else if (apiFormat.type == Format.Type.RAML) {
-            //TODO: not implemented
-            throw new Exception("Not implemented RAML");
+            String expUrl = PathUtils.expandPath(path, project);
+
+            // if this is a file - convert it to a file URL
+            if (new File(expUrl).exists())
+                expUrl = new File(expUrl).toURI().toURL().toString();
+            RamlImporter importer = new RamlImporter(project);
+            importer.setCreateSampleRequests(true);
+            RestService rest = importer.importRaml(expUrl);
+            return new RestService[] { rest };
         } else if (apiFormat.type == Format.Type.WADL) {
             RestService rest = (RestService) project
                     .addNewInterface(ModelItemNamer.createName("Service", project.getInterfaceList()), RestServiceFactory.REST_TYPE);

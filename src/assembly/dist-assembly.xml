@@ -9,6 +9,7 @@
             <unpack>false</unpack>
             <outputDirectory>/lib</outputDirectory>
             <includes>
+                <!--swagger dependencies-->
                 <include>com.smartbear:swagger4j</include>
                 <include>org.glassfish:javax.json</include>
                 <include>javax.json:javax.json-api</include>
@@ -19,6 +20,9 @@
                 <include>com.fasterxml.jackson.core:jackson-databind</include>
                 <include>com.fasterxml.jackson.datatype:jackson-datatype-joda</include>
                 <include>com.fasterxml.jackson.dataformat:jackson-dataformat-yaml</include>
+                <!--raml dependencies-->
+                <include>org.raml:raml-parser</include>
+                <include>org.yaml:snakeyaml</include>
             </includes>
         </dependencySet>
         <dependencySet>
@@ -27,12 +31,17 @@
             <includes>
                 <include>com.smartbear:ready-apisio-plugin</include>
                 <include>com.smartbear:soapui-swagger-plugin</include>
+                <include>com.smartbear:soapui-raml-plugin</include>
             </includes>
             <unpackOptions>
                 <excludes>
                     <exclude>com\smartbear\swagger\PluginConfig.class</exclude>
                     <exclude>com\smartbear\swagger\SwaggerApiImporter.class</exclude>
                     <exclude>com\smartbear\swagger\*Action*.class</exclude>
+                    <!---->
+                    <exclude>com\smartbear\soapui\raml\PluginConfig.class</exclude>
+                    <exclude>com\smartbear\soapui\raml\importers\RamlApiImporter.class</exclude>
+                    <exclude>com\smartbear\soapui\raml\actions\*Action*.class</exclude>
                 </excludes>
             </unpackOptions>
         </dependencySet>
