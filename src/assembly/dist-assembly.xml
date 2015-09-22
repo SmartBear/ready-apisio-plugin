@@ -35,6 +35,8 @@
             </includes>
             <unpackOptions>
                 <excludes>
+                    <exclude>com\smartbear\StandaloneLauncher*.class</exclude>
+                    <!---->
                     <exclude>com\smartbear\swagger\PluginConfig.class</exclude>
                     <exclude>com\smartbear\swagger\SwaggerApiImporter.class</exclude>
                     <exclude>com\smartbear\swagger\*Action*.class</exclude>
