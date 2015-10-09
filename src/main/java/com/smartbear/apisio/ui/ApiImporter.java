@@ -13,6 +13,7 @@ import com.smartbear.apisio.entities.importx.Api;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ApiImporter implements Worker {
@@ -21,7 +22,7 @@ public class ApiImporter implements Worker {
     private final List<Api> apis;
     private final WsdlProject wsdlProject;
     private final List<RestService> addedServices = new ArrayList<>();
-    private final StringBuilder errors = new StringBuilder();
+    private final List<ErrorDialog.ErrorInfo> errors = new LinkedList<>();
 
     private ApiImporter(XProgressDialog waitDialog, List<Api> apis, WsdlProject wsdlProject) {
         this.waitDialog = waitDialog;
@@ -49,7 +50,7 @@ public class ApiImporter implements Worker {
                 addedServices.addAll(Arrays.asList(services));
             } catch (Throwable e) {
                 SoapUI.logError(e);
-                errors.append(String.format(Strings.Executing.IMPORT_ERROR, api.name, e.getMessage()));
+                errors.add(new ErrorDialog.ErrorInfo(api.name, api.baseUrl, e.getMessage()));
             }
         }
         return null;
@@ -61,8 +62,8 @@ public class ApiImporter implements Worker {
             return;
         }
         waitDialog.setVisible(false);
-        if (errors.length() > 0) {
-            UISupport.showErrorMessage(errors.toString());
+        if (errors.size() > 0) {
+            ErrorDialog.showErrors(errors);
         }
     }
 
