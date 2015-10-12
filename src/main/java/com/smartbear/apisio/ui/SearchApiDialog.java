@@ -135,7 +135,7 @@ public class SearchApiDialog implements AutoCloseable {
         public final static String SEARCH = "Search";
 
         @AField(description = "API Name", type = AField.AFieldType.COMPONENT)
-        public final static String NAME = "Name";
+        public final static String NAME = "API";
 
         @AField(description = Strings.BaseDialog.DESCRIPTION_LABEL, type = AField.AFieldType.INFORMATION)
         public final static String DESCRIPTION = "Description";
