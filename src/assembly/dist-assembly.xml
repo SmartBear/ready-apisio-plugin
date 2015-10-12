@@ -23,6 +23,8 @@
                 <!--raml dependencies-->
                 <include>org.raml:raml-parser</include>
                 <include>org.yaml:snakeyaml</include>
+                <!--miglayout-->
+                <include>com.miglayout:miglayout-core</include>
             </includes>
         </dependencySet>
         <dependencySet>
