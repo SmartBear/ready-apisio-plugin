@@ -8,7 +8,6 @@ import com.eviware.soapui.support.action.support.AbstractSoapUIAction;
 import com.smartbear.ActionGroups;
 import com.smartbear.apisio.Strings;
 import com.smartbear.apisio.entities.export.Domain;
-import com.smartbear.apisio.ui.ExportApiDialog;
 import com.smartbear.apisio.ui.export.ExportApiListDialog;
 import com.smartbear.utils.JsonFormatter;
 

@@ -90,7 +90,7 @@ public final class ExportApiListDialog extends WizardDialogBase {
         }
     }
 
-    @AForm(name = Strings.ExportApiDialog.CAPTION, description = Strings.ExportApiDialog.DESCRIPTION, helpUrl = "https://github.com/SmartBear/ready-apis-plugin.git")
+    @AForm(name = Strings.ExportApiListDialog.CAPTION, description = Strings.ExportApiListDialog.DESCRIPTION, helpUrl = "https://github.com/SmartBear/ready-apis-plugin.git")
     public interface Form {
         @AField(name = " ", description = "", type = AField.AFieldType.COMPONENT)
         public static final String CONTAINER = " ";
