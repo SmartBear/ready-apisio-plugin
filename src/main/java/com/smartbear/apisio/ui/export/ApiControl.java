@@ -73,6 +73,8 @@ public final class ApiControl {
         this.baseUrl.setText(api.baseUrl);
         this.humanUrl.setText(api.humanUrl);
         this.tags.setText(StringUtils.join(api.tags.toArray(new String[]{}), ","));
+        this.definition.setText(api.propertyUrl);
+        this.definitionType.setSelectedItem(api.propertyType);
     }
 
     public void applyTo(Api api) {
