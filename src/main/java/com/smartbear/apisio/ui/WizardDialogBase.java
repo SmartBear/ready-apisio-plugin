@@ -64,6 +64,7 @@ public abstract class WizardDialogBase implements AutoCloseable {
 
     private void prevActionHandler(ActionEvent e) {
         if (pageIndex > 0) {
+            readPageContent(pageIndex);
             pageIndex -= 1;
             updateActionsState();
             updatePageContent(pageIndex);
