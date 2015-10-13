@@ -109,6 +109,50 @@ public final class Strings {
         public static final String INVALID_TAGS_FORMAT = "Invalid tags format";
     }
 
+    public static final class DomainControl {
+        public static final String TITLE = "Domain description";
+        public static final String NAME = "Name:";
+        public static final String NAME_HINT = "Domain name";
+        public static final String DESCRIPTION = "Description:";
+        public static final String DESCRIPTION_HINT = "Domain description";
+        public static final String URL = "URL:";
+        public static final String URL_HINT = "Domain URL";
+        public static final String IMAGE = "Image:";
+        public static final String IMAGE_HINT = "Domain icon's image";
+        public static final String MAINTAINER = "Maintainer:";
+        public static final String MAINTAINER_HINT = "Domain maintainer";
+        public static final String CREATED = "Created:";
+        public static final String CREATED_HINT = "Date of creation of the definition file";
+        public static final String MODIFIED = "Modified:";
+        public static final String MODIFIED_HINT = "Date of modification of the definition file";
+        public static final String TAGS = "Tags:";
+        public static final String TAGS_HINT = "Comma separated list of the key words which identify the content of the APIs.json file";
+    }
+
+    public static final class ApiControl {
+        public static final String TITLE = "API description";
+        public static final String NAME = "Name:";
+        public static final String NAME_HINT = "API name";
+        public static final String DESCRIPTION = "Description:";
+        public static final String DESCRIPTION_HINT = "API description";
+        public static final String IMAGE = "Image:";
+        public static final String IMAGE_HINT = "API icon's image";
+        public static final String BASE_URL = "Base URL:";
+        public static final String BASE_URL_HINT = "Base API URL";
+        public static final String HUMAN_URL = "Human URL:";
+        public static final String HUMAN_URL_HINT = "Human API URL";
+        public static final String TAGS = "Tags:";
+        public static final String TAGS_HINT = "Comma separated list of the key words which identify the content of the API";
+        public static final String DEFINITION = "Definition:";
+        public static final String DEFINITION_HINT = "Definition URL and type";
+    }
+
+    public static final class SelectFolderControl {
+        public static final String TITLE = "Select folder to save the APIs.json definition";
+        public static final String FOLDER = "Folder:";
+        public static final String FOLDER_HINT = "Folder to save the APIs.json definition";
+    }
+
     public static final class FieldValidator {
         public static final String EMPTY_VALUE = "Please enter the %s";
         public static final String TOO_SHORT_VALUE = "The %s must be at least 5 characters long.";
