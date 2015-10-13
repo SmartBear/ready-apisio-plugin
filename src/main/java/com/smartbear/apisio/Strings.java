@@ -108,4 +108,13 @@ public final class Strings {
         public static final String INVALID_URL_FORMAT = "%s does not match pattern: %s";
         public static final String INVALID_TAGS_FORMAT = "Invalid tags format";
     }
+
+    public static final class FieldValidator {
+        public static final String EMPTY_VALUE = "Please enter the %s";
+        public static final String TOO_SHORT_VALUE = "The %s must be at least 5 characters long.";
+        public static final String INVALID_DATE_VALUE = "The date %s does not match pattern YYYY-mm-dd";
+        public static final String INVALID_URL_FORMAT = "%s does not match pattern: %s";
+        public static final String INVALID_TAGS_FORMAT = "Invalid tags format";
+        public static final String FOLDER_NOT_EXISTS = "Specified folder doesn't exists";
+    }
 }
