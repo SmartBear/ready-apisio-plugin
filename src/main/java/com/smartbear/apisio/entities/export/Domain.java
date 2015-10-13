@@ -34,11 +34,12 @@ public final class Domain {
         modified = created;
     }
 
-    public void addApi(String name, String description) {
+    public Api addApi(String name, String description) {
         Api api = new Api();
         api.name = name;
         api.description = description;
         apis.add(api);
+        return api;
     }
 
     public JsonObject toJson() {

@@ -9,6 +9,7 @@ import com.eviware.soapui.support.UISupport;
 import com.eviware.soapui.support.action.support.AbstractSoapUIAction;
 import com.smartbear.ActionGroups;
 import com.smartbear.apisio.Strings;
+import com.smartbear.apisio.entities.export.Api;
 import com.smartbear.apisio.entities.export.Domain;
 import com.smartbear.apisio.ui.export.ExportApiListDialog;
 import com.smartbear.utils.JsonFormatter;
@@ -31,7 +32,11 @@ public class ExportProjectApisJsonAction extends AbstractSoapUIAction<WsdlProjec
         for (ModelItem item: wsdlProject.getInterfaceList()) {
             if (item instanceof RestService) {
                 RestService service = (RestService)item;
-                domain.addApi(service.getName(), service.getDescription());
+                Api api = domain.addApi(service.getName(), service.getDescription());
+                if (service.getEndpoints().length > 0) {
+                    api.baseUrl = service.getEndpoints()[0];
+                    api.humanUrl= service.getEndpoints()[0];
+                }
             }
         }
         ExportApiListDialog.Result dialogResult;

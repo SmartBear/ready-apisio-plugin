@@ -7,6 +7,7 @@ import com.eviware.soapui.support.UISupport;
 import com.eviware.soapui.support.action.support.AbstractSoapUIAction;
 import com.smartbear.ActionGroups;
 import com.smartbear.apisio.Strings;
+import com.smartbear.apisio.entities.export.Api;
 import com.smartbear.apisio.entities.export.Domain;
 import com.smartbear.apisio.ui.export.ExportApiListDialog;
 import com.smartbear.utils.JsonFormatter;
@@ -26,7 +27,11 @@ public class ExportApisJsonAction extends AbstractSoapUIAction<RestService> {
         Domain domain = new Domain();
         domain.name = restService.getName();
         domain.description = restService.getDescription();
-        domain.addApi(restService.getName(), restService.getDescription());
+        Api api = domain.addApi(restService.getName(), restService.getDescription());
+        if (restService.getEndpoints().length > 0) {
+            api.baseUrl = restService.getEndpoints()[0];
+            api.humanUrl= restService.getEndpoints()[0];
+        }
         ExportApiListDialog.Result dialogResult;
         try (ExportApiListDialog dlg = new ExportApiListDialog(domain)) {
             dialogResult = dlg.show();
