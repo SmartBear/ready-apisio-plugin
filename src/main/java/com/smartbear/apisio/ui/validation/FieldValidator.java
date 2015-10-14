@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public final class FieldValidator {
     private static final Pattern datePattern = Pattern.compile("^\\d\\d\\d\\d-\\d\\d-\\d\\d$");
-    private static final Pattern urlPattern = Pattern.compile("^(http|https)://[\\w.-]+$");
+    private static final Pattern urlPattern = Pattern.compile("^(http|https)://[\\w.-]+(:\\d+)?(/[\\w.-]+)*(/?)$");
     private static final Pattern tagsPattern = Pattern.compile("^[\\w\\-]+(,(\\s)?[\\w\\-]+)*$");
 
     public ValidationError validateRequired(JTextField field, String fieldName, int minimumValueLength) {
