@@ -43,3 +43,13 @@ With import options you can easily:
 * create a load tests of the API (in the LoadUI NG module)
 * create a security tests of the API (in the Secure module)
 * create a virtualized version of the API for sandboxing/simulation purposes (in the ServiceV module).
+
+
+Another possibility is to export the selected REST service or REST services of the selected project
+to the APIs.json format (http://apisjson.org/format.html). Version of the format is 0.14 (http://apisjson.org/format/apisjson_0.14.txt).
+To create APIs.json file follow these steps:
+* select “Export APIs.json”  in the context menu for the selected project or REST service and go to the
+  first page of the wizard that contains common information for the all selected REST services
+* each selected REST service will be presented on the separate page
+* on the last page of the wizard you need to enter a folder to save result file
+* the result file will have name of the selected project or REST service and json extension.
