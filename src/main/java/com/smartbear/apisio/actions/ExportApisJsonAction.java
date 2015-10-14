@@ -33,7 +33,7 @@ public class ExportApisJsonAction extends AbstractSoapUIAction<RestService> {
             api.humanUrl= restService.getEndpoints()[0];
         }
         ExportApiListDialog.Result dialogResult;
-        try (ExportApiListDialog dlg = new ExportApiListDialog(domain)) {
+        try (ExportApiListDialog dlg = new ExportApiListDialog(domain, false)) {
             dialogResult = dlg.show();
         }
 

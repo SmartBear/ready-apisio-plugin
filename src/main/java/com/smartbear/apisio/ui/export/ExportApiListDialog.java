@@ -31,8 +31,8 @@ public final class ExportApiListDialog extends WizardDialogBase {
     private final Domain domain;
     private String folderName;
 
-    public ExportApiListDialog(Domain domain) {
-        super(Form.class, domain.apis.size() + 2);
+    public ExportApiListDialog(Domain domain, boolean projectSelected) {
+        super(projectSelected ? ProjectForm.class : ServiceForm.class, domain.apis.size() + 2);
 
         this.domain = domain;
         this.domainControl = new DomainControl();
@@ -89,10 +89,17 @@ public final class ExportApiListDialog extends WizardDialogBase {
             return apiControl.validate();
         }
     }
-
-    @AForm(name = Strings.ExportApiListDialog.CAPTION, description = Strings.ExportApiListDialog.DESCRIPTION, helpUrl = "https://github.com/SmartBear/ready-apis-plugin.git")
+    
     public interface Form {
         @AField(name = " ", description = "", type = AField.AFieldType.COMPONENT)
         public static final String CONTAINER = " ";
+    }
+
+    @AForm(name = Strings.ExportApiListDialog.CAPTION, description = Strings.ExportApiListDialog.SERVICE_DESCRIPTION, helpUrl = "https://github.com/SmartBear/ready-apis-plugin.git")
+    public interface ServiceForm extends Form {
+    }
+
+    @AForm(name = Strings.ExportApiListDialog.CAPTION, description = Strings.ExportApiListDialog.PROJECT_DESCRIPTION, helpUrl = "https://github.com/SmartBear/ready-apis-plugin.git")
+    public interface ProjectForm extends Form {
     }
 }

@@ -60,7 +60,8 @@ public final class Strings {
 
     public static final class ExportApiListDialog {
         public static final String CAPTION = "Export APIs.json definition";
-        public static final String DESCRIPTION = "Creates an APIs.json definition for selected REST API in this project";
+        public static final String SERVICE_DESCRIPTION = "Creates an APIs.json definition for the selected REST service in the project";
+        public static final String PROJECT_DESCRIPTION = "Creates an APIs.json definition for the selected project";
     }
 
     public static final class DomainControl {

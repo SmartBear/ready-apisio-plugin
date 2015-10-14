@@ -40,7 +40,7 @@ public class ExportProjectApisJsonAction extends AbstractSoapUIAction<WsdlProjec
             }
         }
         ExportApiListDialog.Result dialogResult;
-        try (ExportApiListDialog dlg = new ExportApiListDialog(domain)) {
+        try (ExportApiListDialog dlg = new ExportApiListDialog(domain, true)) {
             dialogResult = dlg.show();
         }
 
