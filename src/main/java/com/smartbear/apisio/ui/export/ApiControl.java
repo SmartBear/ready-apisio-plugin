@@ -107,6 +107,9 @@ public final class ApiControl {
         if (error == null) {
             error = fieldValidator.validateTags(tags, "tags");
         }
+        if (error == null && StringUtils.hasContent(definition.getText())) {
+            error = fieldValidator.validateUrl(definition, "Definition");
+        }
 
         if (error != null) {
             UISupport.showErrorMessage(error.message);
